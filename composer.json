@@ -1,5 +1,5 @@
 {
-    "name": "lucassmacedo/omnipay-mercadopago",
+    "name": "cristian-araujo/omnipay-mercadopago",
     "type": "library",
     "description": "MercadoPago gateway for OmniPay",
     "keywords": [
