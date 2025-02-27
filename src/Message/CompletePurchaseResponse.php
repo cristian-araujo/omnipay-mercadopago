@@ -16,7 +16,7 @@ class CompletePurchaseResponse extends AbstractResponse
      */
     public function isSuccessful()
     {
-        return isset($this->data->status);
+        return isset($this->data['status']);
     }
 
     /**
@@ -37,7 +37,7 @@ class CompletePurchaseResponse extends AbstractResponse
     public function getTransactionReference()
     {
 
-        return $this->data->id;
+        return $this->data['id'];
     }
 
     /**
@@ -48,6 +48,6 @@ class CompletePurchaseResponse extends AbstractResponse
 
     public function getTransactionDate()
     {
-        return $this->isSuccessful() ? $this->data->date_created : null;
+        return $this->isSuccessful() ? $this->data['date_created'] : null;
     }
 }
