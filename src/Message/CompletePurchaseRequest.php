@@ -4,17 +4,16 @@ namespace Omnipay\MercadoPago\Message;
 
 class CompletePurchaseRequest extends AbstractRequest
 {
-    protected $liveEndpoint = 'https://api.mercadopago.com/merchant_orders/';
+    protected $liveEndpoint = 'https://api.mercadopago.com/v1/payments/';
     /** @var this option is unavailable */
-    protected $testEndpoint = 'https://api.mercadopago.com/merchant_orders/';
+    protected $testEndpoint = 'https://api.mercadopago.com/v1/payments/';
 
 
     public function getData()
     {
         //get information about collection
-        $id = $this->httpRequest->query->get('merchant_order_id');
+        $id = $this->httpRequest->query->get('collection_id');
         $url = $this->getEndpoint() . "$id?access_token=" . $this->getAccessToken();
-
         $httpRequest = $this->httpClient->request(
             'GET',
             $url,
@@ -22,9 +21,8 @@ class CompletePurchaseRequest extends AbstractRequest
                 'Content-type' => 'application/json',
             )
         );
-        $response = json_decode($httpRequest->getBody()->getContents());
-
-        return isset($response) ? $response : null;
+        $response = $httpRequest->getBody()->getContents();
+        return json_decode($response, true);
     }
 
     public function sendData($data)
