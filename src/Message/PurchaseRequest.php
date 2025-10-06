@@ -50,6 +50,7 @@ class PurchaseRequest extends AbstractRequest
             'back_urls'          => [
                 'success' => $this->getReturnUrl()
             ],
+            'notification_url'   => $this->getNotifyUrl(),
             //TODO add option for that
             'payment_methods'    => [
                 'excluded_payment_types' => [
