@@ -19,7 +19,10 @@ class CompletePurchaseRequest extends AbstractRequest
             throw new \InvalidArgumentException('Payment ID not found. Provide transactionReference parameter or collection_id in query string.');
         }
 
-        $url = $this->getEndpoint() . "$id?access_token=" . $this->getAccessToken();
+        $url = $this->getEndpoint() . "{$id}?access_token=" . $this->getAccessToken();
+
+        \Illuminate\Support\Facades\Log::debug("CompletePurchaseRequest URL: {$url}");
+
         $httpRequest = $this->httpClient->request(
             'GET',
             $url,
