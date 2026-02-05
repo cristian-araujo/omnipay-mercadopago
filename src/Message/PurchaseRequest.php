@@ -48,7 +48,9 @@ class PurchaseRequest extends AbstractRequest
             'external_reference' => $external_reference,
             'auto_return'        => 'approved',
             'back_urls'          => [
-                'success' => $this->getReturnUrl()
+                'success' => $this->getReturnUrl(),
+                'failure' => $this->getCancelUrl(),
+                'pending' => $this->getReturnUrl(),
             ],
             'notification_url'   => $this->getNotifyUrl(),
             //TODO add option for that
